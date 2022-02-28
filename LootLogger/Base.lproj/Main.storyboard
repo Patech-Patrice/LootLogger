@@ -79,6 +79,7 @@
                                     </subviews>
                                     <constraints>
                                         <constraint firstItem="a6t-fS-b7t" firstAttribute="leading" secondItem="iHW-v0-UgI" secondAttribute="leading" id="71n-4I-Wk2"/>
+                                        <constraint firstItem="a6t-fS-b7t" firstAttribute="top" secondItem="iHW-v0-UgI" secondAttribute="bottom" constant="8" symbolic="YES" id="I2o-rN-z4e"/>
                                         <constraint firstAttribute="trailing" secondItem="WO2-g6-hW6" secondAttribute="trailing" constant="41" id="JJs-Ym-fYb"/>
                                         <constraint firstItem="iHW-v0-UgI" firstAttribute="top" secondItem="Lg2-0W-2Zw" secondAttribute="topMargin" id="KBj-rM-9ec"/>
                                         <constraint firstItem="iHW-v0-UgI" firstAttribute="leading" secondItem="Lg2-0W-2Zw" secondAttribute="leadingMargin" constant="9" id="Ni0-hv-9ES"/>
