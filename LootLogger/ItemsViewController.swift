@@ -13,7 +13,7 @@ class ItemsViewController: UITableViewController {
     
     //create a table view header that will have two subviews that are instances of UIButton:, one to toggle editing mode and the other to add a new Item to the table.
     @IBAction func addNewItem(_ sender: UIButton) {
-       //Create a new item and add it to the store
+        //Create a new item and add it to the store
         let newItem = itemStore.createItem()
         //Figure out where that item is in the array
         if let index = itemStore.allItems.firstIndex(of: newItem) {
@@ -23,9 +23,9 @@ class ItemsViewController: UITableViewController {
             tableView.insertRows(at: [indexPath], with: .automatic)
         }
     }
-           
-        
-     
+    
+    
+    
     
     @IBAction func toggleEditingMode(_ sender: UIButton) {
         //If you are currently in editing mode...
@@ -57,8 +57,8 @@ class ItemsViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView,
                             cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-//        //Create an instance of UITableViewCell with default appearance
-//        let cell = UITableViewCell(style: .value1, reuseIdentifier: "UITableViewCell")
+        //        //Create an instance of UITableViewCell with default appearance
+        //        let cell = UITableViewCell(style: .value1, reuseIdentifier: "UITableViewCell")
         
         //update method to get or reuse cells; dequeue method will check the queue of cells to see whether a cell with the correct reuse identifier already exists. If so, it will dequeue that cell.  If there is no existing cell, a new cell will be created and returned.
         let cell = tableView.dequeueReusableCell(withIdentifier: "UITableViewCell",
@@ -90,4 +90,14 @@ class ItemsViewController: UITableViewController {
         }
         
     }
+    
+    //Implement tableView(_:moveRowAt:to:) to update the store
+    
+    override func tableView(_ tableView: UITableView,
+                            moveRowAt sourceIndexPath: IndexPath,
+                            to destinationIndexPath: IndexPath) {
+        //update the model
+        itemStore.moveItem(from: sourceIndexPath.row, to: destinationIndexPath.row)
+    }
+    
 }
