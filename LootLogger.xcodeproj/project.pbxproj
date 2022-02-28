@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		543800DC27CD871600D01AEA /* ItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 543800DB27CD871600D01AEA /* ItemCell.swift */; };
 		544D516627CD2F940065FA7E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 544D516527CD2F940065FA7E /* AppDelegate.swift */; };
 		544D516827CD2F940065FA7E /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 544D516727CD2F940065FA7E /* SceneDelegate.swift */; };
 		544D516D27CD2F940065FA7E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 544D516B27CD2F940065FA7E /* Main.storyboard */; };
@@ -38,6 +39,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		543800DB27CD871600D01AEA /* ItemCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemCell.swift; sourceTree = "<group>"; };
 		544D516227CD2F940065FA7E /* LootLogger.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LootLogger.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		544D516527CD2F940065FA7E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		544D516727CD2F940065FA7E /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -109,6 +111,7 @@
 				544D519727CD31F50065FA7E /* Item.swift */,
 				544D519927CD382E0065FA7E /* ItemStore.swift */,
 				544D519527CD305B0065FA7E /* ItemsViewController.swift */,
+				543800DB27CD871600D01AEA /* ItemCell.swift */,
 				544D516E27CD2F950065FA7E /* Assets.xcassets */,
 				544D517027CD2F950065FA7E /* LaunchScreen.storyboard */,
 				544D517327CD2F950065FA7E /* Info.plist */,
@@ -266,6 +269,7 @@
 			files = (
 				544D519827CD31F50065FA7E /* Item.swift in Sources */,
 				544D519627CD305B0065FA7E /* ItemsViewController.swift in Sources */,
+				543800DC27CD871600D01AEA /* ItemCell.swift in Sources */,
 				544D516627CD2F940065FA7E /* AppDelegate.swift in Sources */,
 				544D519A27CD382E0065FA7E /* ItemStore.swift in Sources */,
 				544D516827CD2F940065FA7E /* SceneDelegate.swift in Sources */,

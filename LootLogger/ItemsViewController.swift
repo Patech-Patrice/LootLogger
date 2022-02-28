@@ -11,6 +11,13 @@ class ItemsViewController: UITableViewController {
     
     var itemStore: ItemStore!
     
+    //set height of the table view as soon as the app loads
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        tableView.rowHeight = 65
+    }
+    
     //create a table view header that will have two subviews that are instances of UIButton:, one to toggle editing mode and the other to add a new Item to the table.
     @IBAction func addNewItem(_ sender: UIButton) {
         //Create a new item and add it to the store
@@ -57,18 +64,20 @@ class ItemsViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView,
                             cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        //        //Create an instance of UITableViewCell with default appearance
-        //        let cell = UITableViewCell(style: .value1, reuseIdentifier: "UITableViewCell")
+               //Create an instance of UITableViewCell with default appearance
         
         //update method to get or reuse cells; dequeue method will check the queue of cells to see whether a cell with the correct reuse identifier already exists. If so, it will dequeue that cell.  If there is no existing cell, a new cell will be created and returned.
-        let cell = tableView.dequeueReusableCell(withIdentifier: "UITableViewCell",
-                                                 for: indexPath)
+        //Get a new or recycled cell.  Here we updated the reuse method to reflect the new subclass ItemCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "ItemCell",
+                                                 for: indexPath) as! ItemCell
         
         //Set the text on the cell with the description of the item that is at the nth index of items, where n=row this cell will appear in on the table view
         let item = itemStore.allItems[indexPath.row]
         
-        cell.textLabel?.text = item.name
-        cell.detailTextLabel?.text = "$\(item.valueInDollars)"
+        //configure the cell with the item. For each label on the cell you set its text to some property from the appropriate Item.
+        cell.nameLabel.text = item.name
+        cell.serialNumberLabel.text = item.serialNumber
+        cell.valueLabel.text = "$\(item.valueInDollars)"
         
         return cell
     }
