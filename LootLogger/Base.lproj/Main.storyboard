@@ -58,21 +58,21 @@
                                     <rect key="frame" x="0.0" y="0.0" width="414" height="65"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iHW-v0-UgI">
-                                            <rect key="frame" x="29" y="11" width="42" height="21"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iHW-v0-UgI">
+                                            <rect key="frame" x="29" y="11" width="35.5" height="17"/>
+                                            <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalCompressionResistancePriority="749" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="a6t-fS-b7t">
-                                            <rect key="frame" x="29" y="40" width="42" height="21"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalCompressionResistancePriority="749" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="a6t-fS-b7t">
+                                            <rect key="frame" x="29" y="36" width="28.5" height="25"/>
+                                            <fontDescription key="fontDescription" style="UICTFontTextStyleCaption1"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WO2-g6-hW6">
-                                            <rect key="frame" x="331" y="22" width="42" height="21"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WO2-g6-hW6">
+                                            <rect key="frame" x="337.5" y="24" width="35.5" height="17"/>
+                                            <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
@@ -83,7 +83,9 @@
                                         <constraint firstAttribute="trailing" secondItem="WO2-g6-hW6" secondAttribute="trailing" constant="41" id="JJs-Ym-fYb"/>
                                         <constraint firstItem="iHW-v0-UgI" firstAttribute="top" secondItem="Lg2-0W-2Zw" secondAttribute="topMargin" id="KBj-rM-9ec"/>
                                         <constraint firstItem="iHW-v0-UgI" firstAttribute="leading" secondItem="Lg2-0W-2Zw" secondAttribute="leadingMargin" constant="9" id="Ni0-hv-9ES"/>
+                                        <constraint firstAttribute="trailing" secondItem="iHW-v0-UgI" secondAttribute="trailing" constant="349.5" id="aun-1h-45I"/>
                                         <constraint firstItem="WO2-g6-hW6" firstAttribute="centerY" secondItem="Lg2-0W-2Zw" secondAttribute="centerY" id="fJZ-DM-iE6"/>
+                                        <constraint firstItem="WO2-g6-hW6" firstAttribute="leading" secondItem="Lg2-0W-2Zw" secondAttribute="leading" constant="337.5" id="ho5-Dn-XMW"/>
                                         <constraint firstAttribute="bottom" secondItem="a6t-fS-b7t" secondAttribute="bottom" constant="4" id="qkA-gu-Suc"/>
                                     </constraints>
                                 </tableViewCellContentView>
