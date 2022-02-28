@@ -73,5 +73,21 @@ class ItemsViewController: UITableViewController {
         return cell
     }
     
- 
+    //implement tableView(_:commit:forRowAt); when called on the data source it passes two arguments, first is editing for deletion sewcond confirms the deletion by calling the deletRows method
+    override func tableView(_ tableView: UITableView,
+                            commit editingStyle: UITableViewCell.EditingStyle,
+                            forRowAt indexPath: IndexPath) {
+        //If the table view is asking to commit a delete command...
+        if editingStyle == .delete {
+            let item = itemStore.allItems[indexPath.row]
+            
+            //Remove the item from the store
+            itemStore.removeItem(item)
+            
+            //Also remove that row from the table view with an animation
+            tableView.deleteRows(at: [indexPath], with: .automatic)
+            
+        }
+        
+    }
 }
