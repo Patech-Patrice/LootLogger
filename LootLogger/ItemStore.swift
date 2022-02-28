@@ -21,11 +21,11 @@ class ItemStore {
         
         return newItem
     }
-    //implement the designated initializer to add five random items by populating the ItemStore with Item instances
-    init() {
-        for _ in 0..<5 {
-            createItem()
-        }
-    }
+    //implement the designated initializer to add five random items by populating the ItemStore with Item instances. This block not needed once a user can add and remove items from the store.
+//    init() {
+//        for _ in 0..<5 {
+//            createItem()
+//        }
+//    }
 
 }
