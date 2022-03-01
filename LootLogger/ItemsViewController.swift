@@ -2,7 +2,7 @@
 //  ItemsViewController.swift
 //  LootLogger
 //
-//  Created by Patrice Drayton on 2/28/22.
+//  Created by Patrice Drayton on 2/28/22.`
 //
 
 import UIKit
@@ -112,4 +112,24 @@ class ItemsViewController: UITableViewController {
         itemStore.moveItem(from: sourceIndexPath.row, to: destinationIndexPath.row)
     }
     
-}
+    //With the segue identified we can now pass the selected Item instance around by implementing prepare(for:sender:) function
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        //If the triggered segue is the "showItem" segue
+        switch segue.identifier {
+        case "showItem":
+            //Figure out which row was just tapped
+            if let row = tableView.indexPathForSelectedRow?.row {
+                
+                //Get the item associated with this row and pass it along
+                let item = itemStore.allItems[row]
+                let detailViewController = segue.destination as! DetailViewController
+                detailViewController.item = item
+            }
+        default:
+            //catch any unexpected segue identifiers and crash the app
+            preconditionFailure("Unexpected segue identifier")
+            }
+        }
+    }
+    
+
