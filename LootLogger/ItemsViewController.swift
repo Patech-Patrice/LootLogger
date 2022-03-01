@@ -16,13 +16,22 @@ class ItemsViewController: UITableViewController {
         super.viewDidLoad()
         
       
+        tableView.rowHeight = 65
         //tells table view to compute the cell height based on the constraints
-        tableView.rowHeight = UITableView.automaticDimension
-        tableView.estimatedRowHeight = 65
+//        tableView.rowHeight = UITableView.automaticDimension
+//        tableView.estimatedRowHeight = 65
+//
+    }
+    
+    //displaying the edit button programmatically
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder:aDecoder)
+        
+        navigationItem.leftBarButtonItem = editButtonItem
     }
     
     //create a table view header that will have two subviews that are instances of UIButton:, one to toggle editing mode and the other to add a new Item to the table.
-    @IBAction func addNewItem(_ sender: UIButton) {
+    @IBAction func addNewItem(_ sender: UIBarButtonItem) {
         //Create a new item and add it to the store
         let newItem = itemStore.createItem()
         //Figure out where that item is in the array
@@ -36,25 +45,25 @@ class ItemsViewController: UITableViewController {
     
     
     
-    
-    @IBAction func toggleEditingMode(_ sender: UIButton) {
-        //If you are currently in editing mode...
-        if isEditing {
-            //Change text of button to inform user of state
-            sender.setTitle("Edit", for: .normal)
-            
-            //turn off editing mode
-            setEditing(false, animated: true)
-        } else {
-            //Change text of button to inform user of state
-            sender.setTitle("Done", for: .normal)
-            
-            //Enter editing mode
-            setEditing(true, animated: true)
-        }
-        
-    }
-    
+    //This function is not needed because we displayed the edit button programmatically
+//    @IBAction func toggleEditingMode(_ sender: UIButton) {
+//        //If you are currently in editing mode...
+//        if isEditing {
+//            //Change text of button to inform user of state
+//            sender.setTitle("Edit", for: .normal)
+//
+//            //turn off editing mode
+//            setEditing(false, animated: true)
+//        } else {
+//            //Change text of button to inform user of state
+//            sender.setTitle("Done", for: .normal)
+//
+//            //Enter editing mode
+//            setEditing(true, animated: true)
+//        }
+//
+//    }
+//
     
     
     override func tableView(_ tableView: UITableView,
@@ -65,25 +74,85 @@ class ItemsViewController: UITableViewController {
     
     
     
+    
+    
+    
+    
+    
+    
+    ///PRACTICE CODE DON'T DELETE
+    
+//    override func tableView(_ tableView: UITableView,
+//                            cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+//
+//        let cell = UITableViewCell(style: .value1,
+//                                   reuseIdentifier: "UITableViewCell")
+//
+//        //let cell = tableView.dequeueReusableCell(withIdentifier: "ItemCell",
+//                                                        //for: indexPath) as! ItemCell
+//
+//        let item = itemStore.allItems[indexPath.row]
+//
+//        //configure the cell with the item. For each label on the cell you set its text to some property from the appropriate Item.
+//        cell.textLabel?.text = item.name
+//        cell.detailTextLabel?.text = "$\(item.valueInDollars)"
+//
+//
+//        return cell
+//    }
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     override func tableView(_ tableView: UITableView,
                             cellForRowAt indexPath: IndexPath) -> UITableViewCell {
                //Create an instance of UITableViewCell with default appearance
-        
+
         //update method to get or reuse cells; dequeue method will check the queue of cells to see whether a cell with the correct reuse identifier already exists. If so, it will dequeue that cell.  If there is no existing cell, a new cell will be created and returned.
         //Get a new or recycled cell.  Here we updated the reuse method to reflect the new subclass ItemCell
         let cell = tableView.dequeueReusableCell(withIdentifier: "ItemCell",
                                                  for: indexPath) as! ItemCell
-        
+
         //Set the text on the cell with the description of the item that is at the nth index of items, where n=row this cell will appear in on the table view
         let item = itemStore.allItems[indexPath.row]
-        
+
         //configure the cell with the item. For each label on the cell you set its text to some property from the appropriate Item.
-        cell.nameLabel.text = item.name
+        //cell.nameLabel.text = item.name
         cell.serialNumberLabel.text = item.serialNumber
         cell.valueLabel.text = "$\(item.valueInDollars)"
-        
+        cell.nameLabel.text = "\(item.name)"
+        print("hello world")
+       print ([item.serialNumber])
+        print ([item.name])
+       
+
         return cell
+        
     }
+    
+   
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     
     //implement tableView(_:commit:forRowAt); when called on the data source it passes two arguments, first is editing for deletion sewcond confirms the deletion by calling the deletRows method
     override func tableView(_ tableView: UITableView,

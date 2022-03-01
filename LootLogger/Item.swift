@@ -10,6 +10,7 @@ import UIKit
 
 //create a table view with rows.  Each row will display an item with info such as name, serial number, and value in dollars. Serial number is an optional string.
 class Item: Equatable {
+    
     var name: String
     var valueInDollars: Int
     var serialNumber: String?
