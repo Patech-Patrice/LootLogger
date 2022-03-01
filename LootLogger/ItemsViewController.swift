@@ -130,6 +130,20 @@ class ItemsViewController: UITableViewController {
             preconditionFailure("Unexpected segue identifier")
             }
         }
-    }
+    
+    //  //When ItemsViewController appears back on the screen,  the method viewWillAppear(_:) is called.
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        tableView.reloadData()
+        }
+    
+    
+    
+    
+    
+    
+    
+    
+}
     
 
