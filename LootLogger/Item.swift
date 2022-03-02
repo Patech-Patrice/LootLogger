@@ -9,7 +9,9 @@ import UIKit
 
 
 //create a table view with rows.  Each row will display an item with info such as name, serial number, and value in dollars. Serial number is an optional string.
-class Item: Equatable {
+//Equatable:
+//Codable: ensures that Item instances can be saved to and loaded from the disk. Codable types conform to the encodable and decodable protocols.  Any codable type whose properties are all Codable automatically conforms to the protocol itself.  Item satisfies this requirement, as types of its properties (String, Int, String?, and Date) all conform to Codable. Now that Item can be encoded and decoded a coder is needed.
+class Item: Equatable, Codable {
     
     var name: String
     var valueInDollars: Int
@@ -23,7 +25,7 @@ class Item: Equatable {
         && lhs.dateCreated == rhs.dateCreated
     
     }
-    
+ 
     
     //add a designated initializer: a primary initializer for the class which ensures that all properties in the class have a value. Once ensured, a designated initializer calls a designated initializer on its superclass(if it has one).  This initializer takes in arguments for name, serial number and value in dollars. Since the argument names and the property names are the same, use self to distinguish the property from the argument.
     init(name: String, serialNumber: String?, valueInDollars: Int) {
@@ -52,4 +54,6 @@ class Item: Equatable {
             self.init(name: "", serialNumber: nil, valueInDollars: 0)
         }
     }
+    
+    
 }
