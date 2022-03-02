@@ -21,6 +21,7 @@ class DetailViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet var valueField: UITextField!
     @IBOutlet var dateLabel: UILabel!
     
+
     
     //add a property for an Item instance and override viewWillAppear(_:) to set up the interface
     var item: Item! {
@@ -81,6 +82,38 @@ class DetailViewController: UIViewController, UITextFieldDelegate {
         textField.resignFirstResponder()
         return true
     }
+    
+    @IBAction func choosePhotoSource(_ sender: UIBarButtonItem) {
+        print("Camera button pressed")
+        //create an alert controller
+        let alertController = UIAlertController(title: nil,
+                                                message: nil,
+                                                preferredStyle: .actionSheet)
+        
+        //tell alert controller to use the popover presentation style which presents the view in a popover view on Ipad. 
+        alertController.modalPresentationStyle = .popover
+        //specify the bar button item that the popover should point at
+        alertController.popoverPresentationController?.barButtonItem = sender
+        
+        //Add actions to the alert controller's action sheet
+        let cameraAction = UIAlertAction(title: "Camera", style: .default) { _ in
+            print("Present camera")
+        }
+        alertController.addAction(cameraAction)
+        
+        let photoLibraryAction = UIAlertAction(title: "Photo Library", style: .default) { _ in
+            print("Present photo library")
+        }
+        alertController.addAction(photoLibraryAction)
+        
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+        alertController.addAction(cancelAction)
+        
+        //With the action sheet configuredpresent the view controller modally to the user by calling present(_:animated:completion:) on the initiating view controller, passing in the view controller to present as the first argument
+        present(alertController, animated: true, completion: nil)
+    }
+
+    
   
     
     
