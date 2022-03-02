@@ -8,8 +8,16 @@
 import UIKit
 
 //define the ItemStore class and declare a property to store the list of items.  The ItemsViewController will call a method on ItemStore when it wants a new Item to be created.The ItemStore will create the object and add it to an array of instances of Item.
+//
 class ItemStore {
     var allItems = [Item]()
+    //ItemStore needs to construct a URL to the file.  When the ItemStore class is instantiated, the closure () will be run and the return value will be assigned to the itemArchiveUrl property.  The method urls(for:in) searches the file system for a URL that meets the criteria given by the arguments.  THe return value of urls(for:in) is an array of URLs.
+    let itemArchiveURL: URL = {
+        let documentsDirectories =
+        FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
+        let documentDirectory = documentsDirectories.first!
+        return documentDirectory.appendingPathComponent("items.plist")
+    }()
     //add a property of ItemStore
     var itemStore: ItemStore!
     
@@ -52,6 +60,47 @@ class ItemStore {
         
         
     }
+    
+    
+    //Coder is responsible for encoding a type into some external presentation. The PropertyListEncoder saves data out in a property list format; and JSONEncoder saves data out in a JSON format.  Item will be serialized using a property list.
+    //Property list is represented using an XML or binary format and can hold Array, Bool, Data, Date, Dictionary, FLoat, Int and String properties.
+    
+    //saves the item; uses a do-catch statement to catch the error
+   @objc func saveChanges() -> Bool {
+        print("Saving items to: \(itemArchiveURL)")
+        do{
+            //create an instance of PropertyListEncoder that calls the encode(_:) method on the encoder and passes in the allItems array which will encode each of the Item instances. The encode(_:) method returns an instance of Data.
+            let encoder = PropertyListEncoder()
+            let data = try encoder.encode(allItems)
+            //write out the data to the itemArchiveURL.  the .atomic option ensures that there is no data corruption. Item will not be persisted to disk when the saveChanges() method is called.
+            try data.write(to: itemArchiveURL, options: [.atomic])
+            print("saved all of the items")
+            return true
+        } catch  let encodingError {
+            print("Error encoding allItems: \(encodingError)")
+            return false
+        }
+        
+    }
+    
+    //override init() to add an observer for the didEnterBackgroundNotification to save the encoded data for instances of Item when the app exits. NotificationCenter is written in ObjC so saveChanges needs to be exposed to ObjC by adding @objc.
+    init() {
+        //To load instances of Item when the application launces, use the PropertyListDecoder type when the ItemStore is created
+        do{
+            let data = try Data(contentsOf: itemArchiveURL)
+            let unarchiver = PropertyListDecoder()
+            let items = try unarchiver.decode([Item].self, from: data)
+            allItems = items
+        } catch {
+            print("Error reading in saved items: \(error)")
+        }
+        let notificationCenter = NotificationCenter.default
+        notificationCenter.addObserver(self,
+                                       selector: #selector(saveChanges),
+                                       name: UIScene.didEnterBackgroundNotification,
+                                       object: nil)
+    }
+    
    
    
     
