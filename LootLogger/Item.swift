@@ -17,6 +17,8 @@ class Item: Equatable, Codable {
     var valueInDollars: Int
     var serialNumber: String?
     let dateCreated: Date
+    //When an image is added to the store, it's put in the cache under a unique key, and the associated Item object will be given that key.  When the detailViewController wants an image from the store, it will ask its item for the key and search the cache for the image.  Add a new property to store the key.
+    let itemKey: String
     
     static func ==(lhs: Item, rhs: Item) -> Bool {
         return lhs.name == rhs.name
@@ -33,6 +35,8 @@ class Item: Equatable, Codable {
         self.valueInDollars = valueInDollars
         self.serialNumber = serialNumber
         self.dateCreated = Date()
+        //generate  UUID(unique identifier) and set it as the itemKey
+        self.itemKey = UUID().uuidString
     }
     
     //Add a convenience initializer to Item that creates a randomly generated item.  Convenience initializers are considered helpers and are optional; always call another initializer on the SAME class.  If random is true, the instance instance is configured with a random name, serial number and value.
