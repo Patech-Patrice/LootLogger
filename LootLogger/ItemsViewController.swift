@@ -10,6 +10,8 @@ import UIKit
 class ItemsViewController: UITableViewController {
     
     var itemStore: ItemStore!
+    //add an ImageStore property to the controller
+    var imageStore: ImageStore!
     
     //set height of the table view as soon as the app loads
     override func viewDidLoad() {
@@ -73,45 +75,7 @@ class ItemsViewController: UITableViewController {
     
     
     
-    
-    
-    
-    
-    
-    
-    
-    ///PRACTICE CODE DON'T DELETE
-    
-//    override func tableView(_ tableView: UITableView,
-//                            cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-//
-//        let cell = UITableViewCell(style: .value1,
-//                                   reuseIdentifier: "UITableViewCell")
-//
-//        //let cell = tableView.dequeueReusableCell(withIdentifier: "ItemCell",
-//                                                        //for: indexPath) as! ItemCell
-//
-//        let item = itemStore.allItems[indexPath.row]
-//
-//        //configure the cell with the item. For each label on the cell you set its text to some property from the appropriate Item.
-//        cell.textLabel?.text = item.name
-//        cell.detailTextLabel?.text = "$\(item.valueInDollars)"
-//
-//
-//        return cell
-//    }
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
+
     
     
     override func tableView(_ tableView: UITableView,
@@ -132,7 +96,7 @@ class ItemsViewController: UITableViewController {
         cell.valueLabel.text = "$\(item.valueInDollars)"
         cell.nameLabel.text = "\(item.name)"
         print("hello world")
-       print ([item.serialNumber])
+        print ([item.serialNumber])
         print ([item.name])
        
 
@@ -140,19 +104,7 @@ class ItemsViewController: UITableViewController {
         
     }
     
-   
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
+
     
     //implement tableView(_:commit:forRowAt); when called on the data source it passes two arguments, first is editing for deletion sewcond confirms the deletion by calling the deletRows method
     override func tableView(_ tableView: UITableView,
@@ -164,6 +116,9 @@ class ItemsViewController: UITableViewController {
             
             //Remove the item from the store
             itemStore.removeItem(item)
+            
+            //Remove the item's image from the store
+            imageStore.deleteImage(forKey: item.itemKey)
             
             //Also remove that row from the table view with an animation
             tableView.deleteRows(at: [indexPath], with: .automatic)
@@ -193,6 +148,8 @@ class ItemsViewController: UITableViewController {
                 let item = itemStore.allItems[row]
                 let detailViewController = segue.destination as! DetailViewController
                 detailViewController.item = item
+                //set the imageStore property onto the controller
+                detailViewController.imageStore = imageStore
             }
         default:
             //catch any unexpected segue identifiers and crash the app
