@@ -28,6 +28,8 @@ class DetailViewController: UIViewController, UITextFieldDelegate, UINavigationC
             navigationItem.title = item.name
         }
     }
+    //Give controller access to the ImageStore in order for it to fetch and store images
+    var imageStore: ImageStore!
     
     //add a property observer to the item property that updates the title of the navigationItem
     
@@ -56,6 +58,13 @@ class DetailViewController: UIViewController, UITextFieldDelegate, UINavigationC
         serialNumberField.text = item.serialNumber
         valueField.text = numberFormatter.string(from: NSNumber(value: item.valueInDollars))
         dateLabel.text = dateFormatter.string(from: item.dateCreated)
+        
+        //Teach the controller to look for and display images for the selected items and place it in its ImageView by getting the item key
+        let key = item.itemKey
+        //If there is an associated image with the item, display it on the image view
+        let imageToDisplay = imageStore.image(forKey: key)
+        imageView.image = imageToDisplay
+        
     }
     
     
@@ -145,11 +154,17 @@ class DetailViewController: UIViewController, UITextFieldDelegate, UINavigationC
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey: Any]) {
         //Get picked image from info directory. The image the user selects comes packaged within the info dictionary which contains data relevant to the user's selection and its contents will vary depending on how the image picker is configured.
         let image = info[.originalImage] as! UIImage
+        
+        //Store the image in the ImageStore for the item's key
+        imageStore.setImage(image, forKey: item.itemKey)
         //Put that image on the screen in the image view
         imageView.image = image
         //In order to take image picker off the screen call the dismiss method
         dismiss(animated: true, completion: nil)
     }
+    
+   
+    
     
     
   
